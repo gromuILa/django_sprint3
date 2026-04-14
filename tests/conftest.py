@@ -26,7 +26,7 @@ except RuntimeError:
             )
 
 pytest_plugins = [
-    'fixtures.fixture_data'
+    'tests.fixtures.fixture_data'
 ]
 
 
