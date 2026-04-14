@@ -4,7 +4,10 @@ from .models import Post, Category, Location
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'pub_date', 'author', 'category', 'location', 'is_published')
+    list_display = (
+        'title', 'pub_date', 'author',
+        'category', 'location', 'is_published'
+    )
     list_filter = ('is_published', 'category', 'location', 'pub_date')
     search_fields = ('title', 'text')
     list_editable = ('is_published',)

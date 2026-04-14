@@ -7,6 +7,7 @@ User = get_user_model()
 
 class PublishedModel(models.Model):
     """Абстрактная модель с полем is_published."""
+
     is_published = models.BooleanField(
         default=True,
         verbose_name='Опубликовано',
@@ -19,6 +20,7 @@ class PublishedModel(models.Model):
 
 class Category(PublishedModel):
     """Модель категории."""
+
     title = models.CharField(
         max_length=256,
         verbose_name='Заголовок'
@@ -29,7 +31,10 @@ class Category(PublishedModel):
     slug = models.SlugField(
         unique=True,
         verbose_name='Идентификатор',
-        help_text='Идентификатор страницы для URL; разрешены символы латиницы, цифры, дефис и подчёркивание.'
+        help_text=(
+            'Идентификатор страницы для URL; разрешены символы латиницы, '
+            'цифры, дефис и подчёркивание.'
+        )
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -46,6 +51,7 @@ class Category(PublishedModel):
 
 class Location(PublishedModel):
     """Модель местоположения."""
+
     name = models.CharField(
         max_length=256,
         verbose_name='Название места'
@@ -65,6 +71,7 @@ class Location(PublishedModel):
 
 class Post(PublishedModel):
     """Модель публикации."""
+
     title = models.CharField(
         max_length=256,
         verbose_name='Заголовок'
@@ -74,7 +81,10 @@ class Post(PublishedModel):
     )
     pub_date = models.DateTimeField(
         verbose_name='Дата и время публикации',
-        help_text='Если установить дату и время в будущем — можно делать отложенные публикации.'
+        help_text=(
+            'Если установить дату и время в будущем — '
+            'можно делать отложенные публикации.'
+        )
     )
     author = models.ForeignKey(
         User,
